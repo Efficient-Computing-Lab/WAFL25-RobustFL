@@ -58,20 +58,25 @@ Once dependencies are installed, preprocess the dataset and distribute it to the
 poetry run partition-dataset [OPTIONS]
 ```
 
-To view available script arguments, use:
-
-```sh
-poetry run partition-dataset --help
-```
-
 #### Available Arguments
 - `dataset_name` (Required): Name of the dataset.
 - `--num_clients` (Optional): Number of federated learning (FL) clients.
 - `--type` (Optional): Partitioning type, either `homogeneous` or `heterogeneous`. Default is `homogeneous`.
 - `--alpha` (Optional): Alpha parameter for the Dirichlet distribution.
 
-> **Note:** At this stage, you may proceed with Steps 3 and 4 to configure your own simulation, or alternatively, execute the automated script used for the experiments presented in the paper by running
-the following command: `poetry run sh run_experiments.sh`. The results of each experiment will be stored in timestamped directories within the `outputs` folder.
+> **Note 1:** To reproduce the data partitioning used in the paper for the CIFAR-10, MNIST, and Fashion-MNIST datasets, execute the following commands:
+> ```sh 
+> poetry run partition-dataset CIFAR10 --num_clients=10 --type=homogeneous
+> poetry run partition-dataset MNIST --num_clients=10 --type=homogeneous
+> poetry run partition-dataset FMNIST --num_clients=10 --type=homogeneous
+>```
+
+> **Note 2:** At this stage, you may proceed with Steps 3 and 4 to configure your own simulation, or alternatively, execute the automated script used for the experiments presented in the paper by running
+the following command: 
+> ```sh 
+> poetry run sh run_experiments.sh 
+> ```
+> The results of each experiment will be stored in timestamped directories within the `outputs` folder.
 
 
 ### 3. Set Configuration File

@@ -166,7 +166,7 @@ def save_partition_heatmap(image_path, dataset, num_clients, num_classes, client
 @click.command()
 @click.argument("dataset_name", required=True)
 @click.option("--num_clients", help="Number of FL clients", default=10)
-@click.option("--type", help="Partitioning type: either homogenous or heterogeneous", default="homogenous")
+@click.option("--type", help="Partitioning type: either homogeneous or heterogeneous", default="homogeneous")
 @click.option("--alpha", help="Alpha parameter of Dirichlet distribution", default=1.0)
 def main(dataset_name: str, num_clients: int, type: str, alpha: float) -> None:
     logger.info(
@@ -193,12 +193,12 @@ def main(dataset_name: str, num_clients: int, type: str, alpha: float) -> None:
             raise ValueError(f"Invalid dataset name: {dataset_name}")
 
     match type:
-        case "homogenous":
+        case "homogeneous":
             client_partitions = homogeneous_partitioning(np.array(train_dataset.targets), num_clients)
         case "heterogeneous":
             client_partitions = heterogeneous_partitioning(np.array(train_dataset.targets), num_clients, alpha)
         case _:
-            raise ValueError(f"Invalid partitioning type: {type}. Can be either 'homogenous' or 'heterogeneous'.")
+            raise ValueError(f"Invalid partitioning type: {type}. Can be either 'homogeneous' or 'heterogeneous'.")
     logger.info("Partitioning finished successfully.")
 
     # Store server data locally
