@@ -31,7 +31,6 @@ def train(
     :param lr: Learning rate.
     :param model_config: Model configuration.
     :param attack_activated: Defines if attack is activated.
-    :return: Train loss.
     """
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     model.to(device)  # move model to GPU if available
@@ -97,6 +96,16 @@ def test(model: nn.Module, test_loader: DataLoader) -> Tuple[float, float]:
 
 
 def set_dataloader(model_config: ModelConfig, images: np.ndarray, labels: np.ndarray):
+    """
+    Creates a DataLoader from raw image and label arrays using the given model configuration.
+    Converts images to PIL format, applies evaluation transformations, and constructs a
+    PyTorch DataLoader with the specified server batch size.
+
+    :param model_config: Model configuration.
+    :param images: Array of image data (assumed to be NumPy arrays representing image pixels).
+    :param labels: Array of corresponding labels for the images.
+    :return: A DataLoader object for iterating over the dataset.
+    """
     # Convert images from numpy arrays to PIL Images and apply transformations
     images_tensor = torch.stack([model_config.eval_transforms(Image.fromarray(img)) for img in images])
     # Convert labels to tensors
@@ -108,6 +117,16 @@ def set_dataloader(model_config: ModelConfig, images: np.ndarray, labels: np.nda
 
 
 def load_server_data(percentage: float):
+    """
+    Loads a portion of the server dataset from pre-saved `.npy` files.
+    This function retrieves image and label data stored in the directory `data/server/{model_name}`.
+    It can return either the full dataset or a random subset based on the specified percentage.
+
+    :param percentage: Fraction of the dataset to load, between 0.0 and 1.0.
+                       Values outside this range are clipped. A value of 1.0 loads the entire dataset.
+    :return: A tuple containing two arrays: (images, labels). The size of the arrays depends on the given percentage.
+    :raises FileNotFoundError: If the image or label file is not found at the expected location.
+    """
     folder_path = f"data/server/{settings.model.name}"
     images_path = f"{folder_path}/server_images.npy"
     labels_path = f"{folder_path}/server_labels.npy"

@@ -4,6 +4,14 @@ from src.settings import settings
 
 
 def flip_labels(labels: torch.tensor, total_number_classes: int) -> torch.tensor:
+    """
+    Flips the given labels across the range of classes.
+    For a label `y` in a classification task with `C` classes, the flipped label becomes `C - 1 - y`.
+
+    :param labels: Tensor of class labels to be flipped.
+    :param total_number_classes: Total number of classes in the classification task.
+    :return: A tensor of flipped class labels.
+    """
     flipped_tensor = total_number_classes - 1 - labels
     return flipped_tensor
 
