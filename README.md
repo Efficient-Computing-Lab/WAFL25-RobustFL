@@ -7,8 +7,19 @@ This repository contains the official implementation of our paper:
 
 **Authors**: Emmanouil Kritharakis, Dusan Jakovetic, Antonios Makris, and Konstantinos Tserpes   
 **Conference**: 3rD Workshop on Advancements in Federated Learning @ ECML-PKDD (2025)  
-**Paper**: [coming soon]  
-**Citation**: [coming soon]
+**Paper**: [Robust Federated Learning under Adversarial Attacks via Loss-Based Client Clustering](https://arxiv.org/abs/2508.12672) <br>
+**Citation**:
+```bibtex
+@misc{kritharakis2025robustfederatedlearningadversarial,
+      title={Robust Federated Learning under Adversarial Attacks via Loss-Based Client Clustering}, 
+      author={Emmanouil Kritharakis and Dusan Jakovetic and Antonios Makris and Konstantinos Tserpes},
+      year={2025},
+      eprint={2508.12672},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2508.12672}, 
+}
+```
 
 ### 🔍 Abstract
 > Federated Learning (FL) enables collaborative model training across multiple clients without sharing private data. 
