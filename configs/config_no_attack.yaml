@@ -3,7 +3,7 @@ server:
   fraction_fit: 1.0
   fraction_eval: 1.0
   dataset_size: 1.0
-  num_rounds: 10
+  num_rounds: 50
   batch_size: 64
 client:
   num_clients: 10
