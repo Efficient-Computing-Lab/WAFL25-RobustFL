@@ -39,7 +39,7 @@ Flower framework.
 ```bash
 .
 ├── src/                # Core Flower code
-│   ├── strategies/        # Flower server strategies (Loss-Based Clustering (ours), Mean, Trimmed Mean, Median, Krum, Multi Krum) 
+│   ├── strategies/     # Flower server strategies (Loss-Based Clustering (ours), Mean, Trimmed Mean, Median, Krum, Multi Krum) 
 ├── configs/            # Configuration files for running and customizing experiments
 ├── data/               # Preprocessed partitioned data for FL clients
 ├── scripts/            # Data partitioning and simulation scripts
